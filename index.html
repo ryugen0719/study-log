@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>みんなの勉強記録</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        h1 { color: #2a7ae2; }
+        form { margin-bottom: 20px; }
+        input { margin: 5px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>📚 勉強記録フォーム</h1>
+    <form method="post">
+        名前：<input type="text" name="name" required>
+        科目：<input type="text" name="subject" required>
+        時間（分）：<input type="number" name="minutes" required>
+        <button type="submit">記録！</button>
+    </form>
+
+    <h2>📝 みんなの記録</h2>
+    <table>
+        <tr><th>名前</th><th>科目</th><th>時間</th><th>日時</th></tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.name }}</td>
+            <td>{{ log.subject }}</td>
+            <td>{{ log.minutes }}分</td>
+            <td>{{ log.time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
